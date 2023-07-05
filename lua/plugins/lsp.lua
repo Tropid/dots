@@ -5,6 +5,7 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
+            { "folke/neodev.nvim", opts = {} },
         },
         config = function()
             require("mason").setup()
