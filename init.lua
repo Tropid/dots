@@ -1,0 +1,47 @@
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+vim.g.mapleader = " "
+
+vim.opt.number = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+
+vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
+
+vim.keymap.set("n", "ü", "[")
+vim.keymap.set("n", "+", "]")
+
+vim.keymap.set("i", "jk", "<esc>")
+vim.keymap.set("i", "kj", "<esc>")
+
+vim.keymap.set("n", "<leader>Lc", ":e $MYVIMRC<cr>")
+
+vim.keymap.set("n", "<leader>f", ":Telescope git_files<cr>")
+vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
+vim.keymap.set("n", "<leader>tp", ":Telescope projects<cr>")
+vim.keymap.set("n", "<leader>s", ":Telescope lsp_workspace_symbols<cr>")
+vim.keymap.set("n", "<leader>o", ":Telescope lsp_document_symbols<cr>")
+
+vim.keymap.set("n", "<leader>cr", ":lua require('toggleterm').exec('cargo run')<cr>")
+vim.keymap.set("n", "<leader>cc", ":lua require('toggleterm').exec('cargo check')<cr>")
+
+vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<cr>")
+vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<cr>")
+
+vim.keymap.set("n", "<leader>g", ":LazyGit<cr>")
+
+require("lazy").setup("plugins")
+
+vim.cmd [[ colorscheme catppuccin-frappe ]]
