@@ -34,6 +34,8 @@ vim.keymap.set("n", "<leader>tp", ":Telescope projects<cr>")
 vim.keymap.set("n", "<leader>s", ":Telescope lsp_dynamic_workspace_symbols<cr>")
 vim.keymap.set("n", "<leader>o", ":Telescope lsp_document_symbols<cr>")
 vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<cr>")
+vim.keymap.set("n", "<leader>ti", ":Telescope lsp_incoming_calls<cr>")
+vim.keymap.set("n", "<leader>to", ":Telescope lsp_outgoing_calls<cr>")
 
 vim.keymap.set("n", "<leader>cr", ":lua require('toggleterm').exec('cargo run')<cr>")
 vim.keymap.set("n", "<leader>cc", ":lua require('toggleterm').exec('cargo check')<cr>")

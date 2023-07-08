@@ -5,6 +5,7 @@ return {
             "williamboman/mason.nvim",
             "neovim/nvim-lspconfig",
             "hrsh7th/cmp-nvim-lsp",
+            "ziglang/zig.vim",
             { "folke/neodev.nvim", opts = {} },
         },
         config = function()
@@ -15,6 +16,9 @@ return {
             require('lspconfig')['lua_ls'].setup { capabilities = capabilities }
             require('lspconfig')['vimls'].setup { capabilities = capabilities }
             require('lspconfig')['rust_analyzer'].setup { capabilities = capabilities }
+            require('lspconfig')['zls'].setup { capabilities = capabilities }
+            require('lspconfig')['svelte'].setup { capabilities = capabilities }
+            require('lspconfig')['tsserver'].setup { capabilities = capabilities }
             require('telescope').load_extension('projects')
 
             vim.api.nvim_create_autocmd('LspAttach', {
