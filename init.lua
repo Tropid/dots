@@ -20,8 +20,8 @@ vim.opt.tabstop = 4
 
 vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
 
-vim.keymap.set("n", "ü", "[")
-vim.keymap.set("n", "+", "]")
+-- vim.keymap.set("n", "ü", "[")
+-- vim.keymap.set("n", "+", "]")
 
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "kj", "<esc>")
@@ -29,6 +29,9 @@ vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("n", "<leader>Lc", ":e $MYVIMRC<cr>")
 
 vim.keymap.set("n", "<M-o>", ":b#<cr>")
+
+vim.keymap.set("n", "üq", ":cprev<cr>")
+vim.keymap.set("n", "+q", ":cnext<cr>")
 
 --local telescope = require("telescope.builtin")
 vim.keymap.set("n", "<leader>f", ":Telescope git_files<cr>")
@@ -49,6 +52,7 @@ vim.keymap.set("n", "<leader>zr", ":lua require('toggleterm').exec('zig build ru
 
 vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<cr>")
+vim.keymap.set("n", "<leader>eo", ":Oil<cr>")
 
 vim.keymap.set("n", "<leader>G", ":LazyGit<cr>")
 
