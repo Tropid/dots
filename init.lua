@@ -18,7 +18,8 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
-vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
+-- vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
+vim.opt.guifont = "Victor Mono:h11"
 
 -- vim.keymap.set("n", "ü", "[")
 -- vim.keymap.set("n", "+", "]")
@@ -39,12 +40,13 @@ vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>")
 vim.keymap.set("n", "<leader>tp", ":Telescope projects<cr>")
 vim.keymap.set("n", "<leader>s", ":Telescope lsp_dynamic_workspace_symbols<cr>")
 vim.keymap.set("n", "<leader>o", ":Telescope lsp_document_symbols<cr>")
-vim.keymap.set("n", "<leader>d", ":Telescope diagnostics<cr>")
+vim.keymap.set("n", "<leader>D", ":Telescope diagnostics<cr>")
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>ti", ":Telescope lsp_incoming_calls<cr>")
 vim.keymap.set("n", "<leader>to", ":Telescope lsp_outgoing_calls<cr>")
 vim.keymap.set("n", "<leader>to", ":Telescope lsp_outgoing_calls<cr>")
 vim.keymap.set("n", "<leader>tg", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>g", ":Telescope grep_string <cword><cr>")
+vim.keymap.set("n", "<leader>g", ":Telescope grep_string<cr>")
 
 vim.keymap.set("n", "<leader>cr", ":lua require('toggleterm').exec('cargo run')<cr>")
 vim.keymap.set("n", "<leader>cc", ":lua require('toggleterm').exec('cargo check')<cr>")
@@ -58,4 +60,4 @@ vim.keymap.set("n", "<leader>G", ":LazyGit<cr>")
 
 require("lazy").setup("plugins")
 
-vim.cmd [[ colorscheme catppuccin-frappe ]]
+vim.cmd [[ colorscheme gruvbox-material ]]
