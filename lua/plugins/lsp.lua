@@ -21,6 +21,7 @@ return {
             require('lspconfig')['tsserver'].setup { capabilities = capabilities }
             require('lspconfig')['cssls'].setup { capabilities = capabilities }
             require('lspconfig')['wgsl_analyzer'].setup { capabilities = capabilities }
+            require('lspconfig')['hls'].setup { capabilities = capabilities }
             require('telescope').load_extension('projects')
 
             vim.api.nvim_create_autocmd('LspAttach', {
