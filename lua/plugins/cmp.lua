@@ -6,7 +6,8 @@ return {
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
 
-            "L3MON4D3/LuaSnip",
+            "hrsh7th/cmp-vsnip",
+            "hrsh7th/vim-vsnip",
         },
         config = function()
             local cmp = require('cmp')
@@ -14,7 +15,7 @@ return {
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        -- require('luasnip').lsp_expand(args.body)
+                        vim.fn["vsnip#anonymous"](args.body)
                     end,
                 },
                 window = {
@@ -26,10 +27,11 @@ return {
                     ['<C-f>'] = cmp.mapping.scroll_docs(4),
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-e>'] = cmp.mapping.abort(),
-                    -- ['<CR>'] = cmp.mapping.confirm({ select = false }),
+                    ['<cr>'] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources({
                     { name = 'nvim_lsp' },
+                    { name = 'vsnip' },
                     -- { name = 'luasnip' }, -- For luasnip users.
                 }, {
                     { name = 'buffer' },
