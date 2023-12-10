@@ -1,0 +1,11 @@
+snippet bpre bevy prelude
+	use bevy::prelude::*;
+
+snippet bpl bevy plugin
+	pub struct ${1:PluginName};
+
+	impl Plugin for ${1} {
+		fn build(&self, app: &mut App) {
+			todo!()
+		}
+	}
