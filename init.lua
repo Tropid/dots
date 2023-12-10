@@ -46,7 +46,6 @@ vim.keymap.set("n", "<leader>ti", ":Telescope lsp_incoming_calls<cr>")
 vim.keymap.set("n", "<leader>to", ":Telescope lsp_outgoing_calls<cr>")
 vim.keymap.set("n", "<leader>tb", ":Telescope builtin<cr>")
 vim.keymap.set("n", "<leader>tg", ":Telescope live_grep<cr>")
-vim.keymap.set("n", "<leader>td", ":Telescope diagnostics<cr>")
 vim.keymap.set("n", "<leader>g", ":Telescope grep_string<cr>")
 
 vim.keymap.set("n", "<leader>cr", ":lua require('toggleterm').exec('cargo run')<cr>")
