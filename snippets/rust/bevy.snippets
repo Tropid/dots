@@ -9,3 +9,15 @@ snippet bpl bevy plugin
 			${2}
 		}
 	}
+
+snippet br bevy resource
+	$1: Resource<$2>
+
+snippet bq bevy query
+	q_$1: Query<$2>
+
+snippet bew bevy event writer
+	mut ${1:writer}: EventWriter<$2>
+
+snippet ber bevy event reader
+	mut ${1:reader}: EventReader<$2>
