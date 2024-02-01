@@ -13,7 +13,7 @@ return {
                         config = {
                             workspaces = {
                                 notes = "~/notes",
-                                hell = "C:/Projekte/hell/doc/notes"
+                                hell = "C:/Projekte/hell/doc"
                             },
                         },
                     },
