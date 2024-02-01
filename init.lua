@@ -17,9 +17,11 @@ vim.opt.number = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.wrap = false
 
 -- vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
-vim.opt.guifont = "Victor Mono:h11"
+-- vim.opt.guifont = "Victor Mono:h11"
+vim.opt.guifont = "ComicShannsMono Nerd Font:h11"
 
 -- vim.keymap.set("n", "ü", "[")
 -- vim.keymap.set("n", "+", "]")
@@ -56,8 +58,12 @@ vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<cr>")
 vim.keymap.set("n", "<leader>eo", ":Oil<cr>")
 
-vim.keymap.set("n", "<leader>G", ":LazyGit<cr>")
+vim.keymap.set("n", "<leader>G", ":Neogit<cr>")
+
+vim.keymap.set("n", "<leader>ne", ":Neorg index<cr>")
+
+vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
+vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
+
 
 require("lazy").setup("plugins")
-
-vim.cmd [[ colorscheme gruvbox-material ]]
