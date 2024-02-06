@@ -1,0 +1,59 @@
+snippet bpr bevy prelude
+	use bevy::prelude::*;
+
+snippet bpl bevy plugin
+	pub struct ${1:PluginName}Plugin;
+
+	impl Plugin for ${1}Plugin {
+		fn build(&self, app: &mut App) {
+			${2}
+		}
+	}
+
+snippet br bevy resource
+	$1: Res<$2>
+
+snippet brm bevy resource mut
+	mut $1: ResMut<$2>
+
+snippet bq bevy query
+	q_$1: Query<$2>
+
+snippet bqm bevy query
+	mut q_$1: Query<$2>
+
+snippet bew bevy event writer
+	mut ${1:writer}: EventWriter<$2>
+
+snippet ber bevy event reader
+	mut ${1:reader}: EventReader<$2>
+
+snippet bass bevy resource
+	mut ${1:meshes}: ResMut<Assets<$2>>
+
+snippet bdec bevy derive component
+	#[derive(Component)]
+
+snippet bder bevy derive resource
+	#[derive(Resource)]
+
+snippet bdee bevy derive event
+	#[derive(Event)]
+
+snippet bco bevy commands
+	mut commands: Commands
+
+snippet btime bevy time
+	time: Res<Time>
+
+snippet bld bevy log debug
+	debug!($1);
+
+snippet bli bevy log info
+	info!($1);
+
+snippet ble bevy log error
+	error!($1);
+
+snippet blw bevy log warning
+	warn!($1);

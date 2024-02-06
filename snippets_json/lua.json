@@ -1,0 +1,1 @@
+{"nvim plugin + nvplugin + nvp":{"prefix":["nvim plugin","nvplugin","nvp"],"body":["return {","    {","        '$1',","        config = function()","            $2","        end","    }","}"]}}

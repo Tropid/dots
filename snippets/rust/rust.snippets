@@ -1,0 +1,45 @@
+snippet p pub
+	pub 
+
+snippet st struct
+	struct ${1:Type} {
+		$2
+	}
+
+snippet en enum
+	enum ${1:Type} {
+		$2,
+	}
+
+snippet m member variable
+	$1: $2,
+
+snippet f fn
+	fn $1($2)$3 {
+		$0
+	}
+
+snippet new new fn
+	pub fn new() -> ${1:Self} {
+		Self {
+			$0
+		}
+	}
+
+snippet for for loop
+	for $1 in $2 {
+		$0
+	}
+
+snippet ils if let Some
+	if let Some($1) = $2 {
+		$0
+	}
+
+snippet match match
+	match $1 {
+		$0
+	}
+
+snippet def
+	..default()

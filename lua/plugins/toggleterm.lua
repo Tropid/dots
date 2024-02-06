@@ -6,7 +6,7 @@ return {
             require('toggleterm').setup({
                 open_mapping = [[<c-_>]],
                 terminal_mappings = true,
-                direction = "float",
+                direction = 'float',
             })
         end
     }

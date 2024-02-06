@@ -10,11 +10,13 @@ return {
         },
         config = function()
             require("mason").setup()
+
             require("mason-lspconfig").setup()
 
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
             require('lspconfig')['lua_ls'].setup { capabilities = capabilities }
             require('lspconfig')['vimls'].setup { capabilities = capabilities }
+            -- handled by rustacean
             -- require('lspconfig')['rust_analyzer'].setup { capabilities = capabilities }
             require('lspconfig')['zls'].setup { capabilities = capabilities }
             require('lspconfig')['svelte'].setup { capabilities = capabilities }

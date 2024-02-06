@@ -5,7 +5,15 @@ return {
 
     {
 	    'nvim-telescope/telescope.nvim', tag = '0.1.2',
-	    dependencies = { 'nvim-lua/plenary.nvim' }
+	    dependencies = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            local telescope = require('telescope')
+            local builtin = require('telescope.builtin')
+
+            vim.keymap.set("n", "<leader>s", function() builtin.find_files({ cwd = vim.fn.stdpath("config") .. "/snippets" }) end)
+
+            telescope.setup({})
+        end
     },
 
     {
