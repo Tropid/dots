@@ -19,7 +19,7 @@ return {
         config = function()
             require("project_nvim").setup({
                 manual_mode = true,
-                patterns = { "Cargo.toml" }
+                patterns = { "Cargo.toml", ".git" }
             })
         end
     },

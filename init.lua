@@ -19,7 +19,8 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
 -- vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
-vim.opt.guifont = "Victor Mono:h11"
+-- vim.opt.guifont = "Victor Mono:h11"
+vim.opt.guifont = "Cascadia Code:h11"
 
 -- vim.keymap.set("n", "ü", "[")
 -- vim.keymap.set("n", "+", "]")
