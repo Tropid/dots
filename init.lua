@@ -19,15 +19,16 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.wrap = false
 
--- vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
+vim.opt.guifont = "JetBrainsMono Nerd Font:h14"
 -- vim.opt.guifont = "Victor Mono:h11"
-vim.opt.guifont = "ComicShannsMono Nerd Font:h11"
+-- vim.opt.guifont = "ComicShannsMono Nerd Font:h11"
 
 -- vim.keymap.set("n", "ü", "[")
 -- vim.keymap.set("n", "+", "]")
 
 vim.keymap.set("i", "jk", "<esc>")
 vim.keymap.set("i", "kj", "<esc>")
+vim.keymap.set("n", "<leader>w", ":w<esc>")
 
 vim.keymap.set("n", "<leader>Lc", ":e $MYVIMRC<cr>")
 
@@ -52,6 +53,7 @@ vim.keymap.set("n", "<leader>g", ":Telescope grep_string<cr>")
 
 vim.keymap.set("n", "<leader>cr", ":lua require('toggleterm').exec('cargo run')<cr>")
 vim.keymap.set("n", "<leader>cc", ":lua require('toggleterm').exec('cargo check')<cr>")
+vim.keymap.set("n", "<leader>cb", ":lua require('toggleterm').exec('cargo build')<cr>")
 vim.keymap.set("n", "<leader>zr", ":lua require('toggleterm').exec('zig build run')<cr>")
 
 vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<cr>")
@@ -60,10 +62,10 @@ vim.keymap.set("n", "<leader>eo", ":Oil<cr>")
 
 vim.keymap.set("n", "<leader>G", ":Neogit<cr>")
 
-vim.keymap.set("n", "<leader>ne", ":Neorg index<cr>")
+-- vim.keymap.set("n", "<leader>ne", ":Neorg index<cr>")
 
-vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
-vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
+-- vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
+-- vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
 
 
 require("lazy").setup("plugins")

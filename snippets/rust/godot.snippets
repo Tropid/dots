@@ -1,0 +1,19 @@
+snippet gp godot prelude
+	use godot::prelude::*;
+
+snippet gapi godot api
+	#[godot_api]
+
+snippet gclass godot class
+	#[derive(GodotClass)]
+	#[class(base=$1)]
+	pub struct $2 {
+		base: Base<$1>,
+	}
+
+	#[godot_api]
+	impl I$1 for $2 {
+		fn init(base: Base<$1>) -> Self {
+			$3
+		}
+	}
