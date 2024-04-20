@@ -1,1 +1,1 @@
-{"bevy plugin + bpl":{"prefix":["bevy plugin","bpl"],"body":["pub struct ${1}Plugin;","","impl Plugin for ${1}Plugin {","    fn build(&self, app: &mut App) {","    }","}"]}}
+{"bevy plugin + bpl":{"prefix":["bevy plugin","bpl"],"body":["pub struct ${1}Plugin;","","impl Plugin for ${1}Plugin {","    fn build(&self, app: &mut App) {","    }","}"]},"bpr":{"prefix":"bpr","body":"use bevy::prelude::*;"}}

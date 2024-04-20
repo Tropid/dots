@@ -30,12 +30,12 @@ return {
                 end
             end, { silent = true })
 
-            require("luasnip.loaders.from_snipmate").load()
-            -- require("luasnip.loaders.from_vscode").lazy_load {
-            --     paths = {
-            --         vim.fn.stdpath('config') .. '/snippets_json',
-            --     }
-            -- }
+            -- require("luasnip.loaders.from_snipmate").load()
+            require("luasnip.loaders.from_vscode").lazy_load {
+                paths = {
+                    vim.fn.stdpath('config') .. '/snippets_json',
+                }
+            }
 
             cmp.setup({
                 snippet = {

@@ -6,10 +6,20 @@ return {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
+        config = function()
+            local wk = require('which-key')
+            wk.setup({})
+
+            wk.register({
+                f = { name = 'Finder' },
+                l = { name = 'LSP' },
+                i = { name = 'DAP' },
+                c = { name = 'Compiler' },
+                e = { name = 'Explorer' },
+                g = { name = 'Git' },
+                s = { name = 'Snippets' },
+                h = { name = 'Git Signs' },
+            }, { prefix = '<leader>' })
+        end,
     },
 }

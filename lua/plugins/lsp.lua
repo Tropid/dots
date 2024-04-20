@@ -28,24 +28,25 @@ return {
             require('telescope').load_extension('projects')
 
             vim.api.nvim_create_autocmd('LspAttach', {
-              group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-              callback = function(ev)
-                vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+                group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+                callback = function(ev)
+                    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-                local opts = { buffer = ev.buf }
-                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-                vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-                vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
-                vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-                vim.keymap.set({ 'n', 'v' }, '<leader>ra', vim.lsp.buf.code_action, opts)
-                vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-                vim.keymap.set('n', '<leader>rf', function()
-                  vim.lsp.buf.format { async = true }
-                end, opts)
-              end,
+                    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = ev.buf, desc = 'Goto Declaration' })
+                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = ev.buf, desc = 'Goto Definition' })
+                    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = ev.buf, desc = 'Hover' })
+                    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+                        { buffer = ev.buf, desc = 'Goto Implementation' })
+                    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = 'Show Signature' })
+                    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = 'Goto Type' })
+                    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = ev.buf, desc = 'Rename' })
+                    vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action,
+                        { buffer = ev.buf, desc = 'Action' })
+                    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, desc = 'Find References' })
+                    vim.keymap.set('n', '<leader>lf', function()
+                        vim.lsp.buf.format { async = true }
+                    end, { buffer = ev.buf, desc = 'Format' })
+                end,
             })
         end
     },

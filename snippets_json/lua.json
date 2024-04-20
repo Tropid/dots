@@ -1,1 +1,1 @@
-{"nvim plugin + nvplugin + nvp":{"prefix":["nvim plugin","nvplugin","nvp"],"body":["return {","    {","        '$1',","        config = function()","            $2","        end","    }","}"]}}
+{"desc":{"body":"{ desc = '$1' }","prefix":"desc"},"func":{"prefix":"func","body":["function()","    $1","end"]},"nvim plugin + nvplugin + nvp":{"body":["return {","    {","        '$1',","        config = function()","            $2","        end","    }","}"],"prefix":["nvim plugin","nvplugin","nvp"]}}
