@@ -40,8 +40,14 @@ return {
                     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = ev.buf, desc = 'Show Signature' })
                     vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { buffer = ev.buf, desc = 'Goto Type' })
                     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { buffer = ev.buf, desc = 'Rename' })
-                    vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action,
-                        { buffer = ev.buf, desc = 'Action' })
+
+                    if vim.o.ft == 'rust' then
+                        vim.keymap.set({ 'n', 'v' }, '<leader>la', ":RustLsp codeAction<cr>",
+                            { buffer = ev.buf, desc = 'Action' })
+                    else
+                        vim.keymap.set({ 'n', 'v' }, '<leader>la', vim.lsp.buf.code_action,
+                            { buffer = ev.buf, desc = 'Action' })
+                    end
                     vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = ev.buf, desc = 'Find References' })
                     vim.keymap.set('n', '<leader>lf', function()
                         vim.lsp.buf.format { async = true }
