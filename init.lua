@@ -43,6 +43,7 @@ vim.keymap.set("n", "<leader>fp", ":Telescope projects<cr>", { desc = 'Projects'
 vim.keymap.set("n", "<leader>fB", ":Telescope builtin<cr>", { desc = 'Builtin' })
 vim.keymap.set("n", "<leader>fw", ":Telescope live_grep<cr>", { desc = 'Live Grep' })
 vim.keymap.set("n", "<leader>fc", ":Telescope grep_string<cr>", { desc = 'Grep Word' })
+vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<cr>", { desc = 'Help Pages' })
 vim.keymap.set("n", "<leader>f<cr>", ":Telescope resume<cr>", { desc = 'Resume' })
 
 vim.keymap.set("n", "<leader>D", ":Telescope diagnostics<cr>", { desc = 'Diagnostics' })
