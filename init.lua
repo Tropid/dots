@@ -20,7 +20,7 @@ vim.opt.tabstop = 4
 vim.opt.wrap = false
 vim.opt.relativenumber = true
 
-vim.opt.guifont = "JetBrainsMono Nerd Font:h14"
+vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
 -- vim.opt.guifont = "Victor Mono:h11"
 -- vim.opt.guifont = "ComicShannsMono Nerd Font:h11"
 
@@ -61,6 +61,14 @@ vim.keymap.set("n", "<leader>cb", ":lua require('toggleterm').exec('cargo build'
 vim.keymap.set("n", "<leader>cl", ":lua require('toggleterm').exec('cargo clippy')<cr>", { desc = 'Lint' })
 vim.keymap.set("n", "<leader>Ca", ':1TermExec cmd="cargo run"<cr>', { desc = 'Run A' })
 vim.keymap.set("n", "<leader>Cb", ':2TermExec cmd="cargo run"<cr>', { desc = 'Run B' })
+vim.keymap.set("n", "<leader>ra", function()
+    vim.cmd[[
+    :1TermExec cmd=".\\zig-out\\bin\\zig-game.exe"<cr>
+    :2TermExec cmd=".\\zig-out\\bin\\zig-game.exe --client"<cr>
+    ]]
+end, { desc = 'Run All' })
+vim.keymap.set("n", "<leader>rb", ':1TermExec cmd="cls & zig build"<cr>', { desc = 'Build' })
+vim.keymap.set("n", "<leader>rs", ':1TermExec cmd="cls & zig build run"<cr>', { desc = 'Run Server' })
 -- vim.keymap.set("n", "<leader>zr", ":lua require('toggleterm').exec('zig build run')<cr>")
 
 vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<cr>", { desc = 'Nvim Tree' })
