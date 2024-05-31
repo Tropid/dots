@@ -1,1 +1,0 @@
-{"self":{"prefix":"self","body":"const Self = @This();"},"dbg":{"prefix":"dbg","body":"std.debug.print(\"$1: {}\\n\", .{$2});"}}

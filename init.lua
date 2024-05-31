@@ -1,84 +1,216 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
+_G.Config = {
+  path_package = vim.fn.stdpath('data') .. '/site/',
+  path_source = vim.fn.stdpath('config') .. '/src/',
+}
+
+local path_package = vim.fn.stdpath('data') ..'/site'
+local mini_path = path_package .. '/pack/deps/start/mini.nvim'
+if not vim.loop.fs_stat(mini_path) then
+    vim.cmd('echo "Installing `mini.nvim`" | redraw')
+    local clone_cmd = {
+        'git', 'clone', '--filter=blob:none',
+        'https://github.com/echasnovski/mini.nvim', mini_path,
+    }
+    vim.fn.system(clone_cmd)
+    vim.cmd('packadd mini.nvim | helptags ALL')
 end
-vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " "
+require('mini.deps').setup({ path = { package = path_package } })
 
-vim.opt.number = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.wrap = false
-vim.opt.relativenumber = true
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local source = function(path) dofile(Config.path_source .. path) end
 
-vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
--- vim.opt.guifont = "Victor Mono:h11"
--- vim.opt.guifont = "ComicShannsMono Nerd Font:h11"
+now(function() source('functions.lua') end)
+now(function() source('settings.lua') end)
+now(function() source('mappings.lua') end)
+now(function() source('mappings-leader.lua') end)
 
--- vim.keymap.set("n", "ü", "[")
--- vim.keymap.set("n", "+", "]")
+-- Step one
+now(function() vim.cmd('colorscheme randomhue') end)
 
-vim.keymap.set("i", "jk", "<esc>")
-vim.keymap.set("i", "kj", "<esc>")
-vim.keymap.set("n", "<leader>w", ":w<esc>", { desc = 'Write File' })
+now(function()
+    require('mini.notify').setup({
+        window = { config = { border = 'double' } }
+    })
+    vim.notify = MiniNotify.make_notify()
+end)
 
-vim.keymap.set("n", "<leader>Lc", ":e $MYVIMRC<cr>", { desc = 'Edit init.lua' })
+now(function() require('mini.tabline').setup() end)
+now(function() require('mini.statusline').setup() end)
+now(function() require('mini.basics').setup({
+    options = {
+        extra_ui = true,
+    },
+    mappings = {
+        windows = true,
+        move_with_alt = true,
+    },
+    autocommands = {
+        relnum_in_visual_mode = true,
+    },
+}) end)
 
-vim.keymap.set("n", "<M-o>", ":b#<cr>", { desc = 'Alternate Buffer' })
+-- Step two
 
-vim.keymap.set("n", "üq", ":cprev<cr>", { desc = 'Next quickfix' })
-vim.keymap.set("n", "+q", ":cnext<cr>", { desc = 'Previous quickfix' })
+later(function() require('mini.extra').setup() end)
 
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>", { desc = 'Files' })
-vim.keymap.set("n", "<leader>b", ":Telescope buffers<cr>", { desc = 'Buffers' })
-vim.keymap.set("n", "<leader>fp", ":Telescope projects<cr>", { desc = 'Projects' })
-vim.keymap.set("n", "<leader>fB", ":Telescope builtin<cr>", { desc = 'Builtin' })
-vim.keymap.set("n", "<leader>fw", ":Telescope live_grep<cr>", { desc = 'Live Grep' })
-vim.keymap.set("n", "<leader>fc", ":Telescope grep_string<cr>", { desc = 'Grep Word' })
-vim.keymap.set("n", "<leader>fh", ":Telescope help_tags<cr>", { desc = 'Help Pages' })
-vim.keymap.set("n", "<leader>f<cr>", ":Telescope resume<cr>", { desc = 'Resume' })
+later(function()
+    local ai = require('mini.ai')
+    ai.setup({
+        custom_textobjects = {
+            B = MiniExtra.gen_ai_spec.buffer(),
+            F = ai.gen_spec.treesitter({ a = '@function.outer', i = '@function.inner' }),
+        },
+    })
+end)
 
-vim.keymap.set("n", "<leader>D", ":Telescope diagnostics<cr>", { desc = 'Diagnostics' })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = 'Float Diagnostic' })
+later(function() require('mini.align').setup() end)
+later(function() require('mini.bracketed').setup() end)
+later(function() require('mini.bufremove').setup() end)
+later(function() require('mini.files').setup() end)
 
-vim.keymap.set("n", "<leader>lS", ":Telescope lsp_dynamic_workspace_symbols<cr>", { desc = 'Workspace Symbols' })
-vim.keymap.set("n", "<leader>ls", ":Telescope lsp_document_symbols<cr>", { desc = 'Document Symbols' })
-vim.keymap.set("n", "<leader>li", ":Telescope lsp_incoming_calls<cr>", { desc = 'Incoming Calls' })
-vim.keymap.set("n", "<leader>lo", ":Telescope lsp_outgoing_calls<cr>", { desc = 'Outgoing Calls' })
+later(function() require('mini.operators').setup() end)
+later(function() require('mini.pairs').setup() end)
 
-vim.keymap.set("n", "<leader>cr", ":lua require('toggleterm').exec('cargo run')<cr>", { desc = 'Run' })
-vim.keymap.set("n", "<leader>cc", ":lua require('toggleterm').exec('cargo check')<cr>", { desc = 'Check' })
-vim.keymap.set("n", "<leader>cb", ":lua require('toggleterm').exec('cargo build')<cr>", { desc = 'Build' })
-vim.keymap.set("n", "<leader>cl", ":lua require('toggleterm').exec('cargo clippy')<cr>", { desc = 'Lint' })
-vim.keymap.set("n", "<leader>Ca", ':1TermExec cmd="cargo run"<cr>', { desc = 'Run A' })
-vim.keymap.set("n", "<leader>Cb", ':2TermExec cmd="cargo run"<cr>', { desc = 'Run B' })
-vim.keymap.set("n", "<leader>ra", function()
-    vim.cmd[[
-    :1TermExec cmd=".\\zig-out\\bin\\zig-game.exe"<cr>
-    :2TermExec cmd=".\\zig-out\\bin\\zig-game.exe --client"<cr>
-    ]]
-end, { desc = 'Run All' })
-vim.keymap.set("n", "<leader>rb", ':1TermExec cmd="cls & zig build"<cr>', { desc = 'Build' })
-vim.keymap.set("n", "<leader>rs", ':1TermExec cmd="cls & zig build run"<cr>', { desc = 'Run Server' })
--- vim.keymap.set("n", "<leader>zr", ":lua require('toggleterm').exec('zig build run')<cr>")
+later(function()
+    require('mini.pick').setup()
+    vim.ui.select = MiniPick.ui_select
+end)
 
-vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<cr>", { desc = 'Nvim Tree' })
-vim.keymap.set("n", "<leader>ef", ":NvimTreeFindFile<cr>", { desc = 'Nvim Sync' })
-vim.keymap.set("n", "<leader>eo", ":Oil<cr>", { desc = 'Oil' })
+later(function() require('mini.surround').setup() end)
 
-vim.keymap.set("n", "<leader>G", ":Neogit<cr>")
-vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>", { desc = 'Branches' })
+later(function() require('mini.visits').setup() end)
 
-vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end, { desc = 'Edit' })
-vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end, { desc = 'Add' })
+later(function()
+    local miniclue = require('mini.clue')
+    miniclue.setup({
+        clues = {
+            Config.leader_group_clues,
+            miniclue.gen_clues.builtin_completion(),
+            miniclue.gen_clues.g(),
+            miniclue.gen_clues.marks(),
+            miniclue.gen_clues.registers(),
+            miniclue.gen_clues.windows({ submode_resize = true }),
+            miniclue.gen_clues.z(),
+        },
+        triggers = {
+            { mode = 'n', keys = '<Leader>' }, -- Leader triggers
+            { mode = 'x', keys = '<Leader>' },
+            { mode = 'n', keys = [[\]] },      -- mini.basics
+            { mode = 'n', keys = '[' },        -- mini.bracketed
+            { mode = 'n', keys = ']' },
+            { mode = 'x', keys = '[' },
+            { mode = 'x', keys = ']' },
+            { mode = 'i', keys = '<C-x>' },    -- Built-in completion
+            { mode = 'n', keys = 'g' },        -- `g` key
+            { mode = 'x', keys = 'g' },
+            { mode = 'n', keys = "'" },        -- Marks
+            { mode = 'n', keys = '`' },
+            { mode = 'x', keys = "'" },
+            { mode = 'x', keys = '`' },
+            { mode = 'n', keys = '"' },        -- Registers
+            { mode = 'x', keys = '"' },
+            { mode = 'i', keys = '<C-r>' },
+            { mode = 'c', keys = '<C-r>' },
+            { mode = 'n', keys = '<C-w>' },    -- Window commands
+            { mode = 'n', keys = 'z' },        -- `z` key
+            { mode = 'x', keys = 'z' },
+        },
+    })
+end)
 
-require("lazy").setup("plugins")
+later(function()
+  require('mini.completion').setup({
+    lsp_completion = {
+      source_func = 'omnifunc',
+      auto_setup = false,
+      process_items = function(items, base)
+        -- Don't show 'Text' and 'Snippet' suggestions
+        items = vim.tbl_filter(function(x) return x.kind ~= 1 and x.kind ~= 15 end, items)
+        return MiniCompletion.default_process_items(items, base)
+      end,
+    },
+    window = {
+      info = { border = 'double' },
+      signature = { border = 'double' },
+    },
+  })
+end)
+
+later(function() require('mini.diff').setup() end)
+
+later(function() require('mini.git').setup() end)
+
+later(function()
+  local hipatterns = require('mini.hipatterns')
+  local hi_words = MiniExtra.gen_highlighter.words
+  hipatterns.setup({
+    highlighters = {
+      fixme = hi_words({ 'FIXME', 'Fixme', 'fixme' }, 'MiniHipatternsFixme'),
+      hack = hi_words({ 'HACK', 'Hack', 'hack' }, 'MiniHipatternsHack'),
+      todo = hi_words({ 'TODO', 'Todo', 'todo' }, 'MiniHipatternsTodo'),
+      note = hi_words({ 'NOTE', 'Note', 'note' }, 'MiniHipatternsNote'),
+
+      hex_color = hipatterns.gen_highlighter.hex_color(),
+    },
+  })
+end)
+
+later(function()
+  require('mini.misc').setup({ make_global = { 'put', 'put_text', 'stat_summary', 'bench_time' } })
+  MiniMisc.setup_auto_root()
+end)
+
+later(function()
+    source('snippets.lua')
+end)
+
+later(function() require('mini.sessions').setup() end)
+
+later(function() require('mini.starter').setup() end)
+
+later(function() require('mini.jump').setup() end)
+
+later(function() require('mini.jump2d').setup() end)
+
+-- Dependencies
+
+now(function()
+    add('nvim-tree/nvim-web-devicons')
+    require('nvim-web-devicons').setup()
+end)
+
+later(function()
+    local ts_spec = {
+        source = 'nvim-treesitter/nvim-treesitter',
+        checkout = 'master',
+        monitor = 'main',
+        hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
+    }
+    add({ source = 'nvim-treesitter/nvim-treesitter-textobjects', depends = { ts_spec } })
+    source('plugins/nvim-treesitter.lua')
+end)
+
+later(function()
+    add({ source = 'williamboman/mason.nvim' })
+    require('mason').setup()
+end)
+
+later(function()
+  add('stevearc/conform.nvim')
+  source('plugins/conform.lua')
+end)
+
+later(function()
+  add('neovim/nvim-lspconfig')
+  source('plugins/nvim-lspconfig.lua')
+end)
+
+later(function()
+  add('tpope/vim-fugitive')
+end)
+
+later(function()
+  add('akinsho/toggleterm.nvim')
+  require('toggleterm').setup()
+end)
