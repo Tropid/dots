@@ -26,7 +26,10 @@ now(function() source('mappings.lua') end)
 now(function() source('mappings-leader.lua') end)
 
 -- Step one
-now(function() vim.cmd('colorscheme randomhue') end)
+now(function()
+    add('ribru17/bamboo.nvim')
+    vim.cmd('colorscheme bamboo')
+end)
 
 now(function()
     require('mini.notify').setup({
@@ -38,16 +41,9 @@ end)
 now(function() require('mini.tabline').setup() end)
 now(function() require('mini.statusline').setup() end)
 now(function() require('mini.basics').setup({
-    options = {
-        extra_ui = true,
-    },
-    mappings = {
-        windows = true,
-        move_with_alt = true,
-    },
-    autocommands = {
-        relnum_in_visual_mode = true,
-    },
+    options = { extra_ui = true, },
+    mappings = { windows = true, },
+    autocommands = { relnum_in_visual_mode = true, },
 }) end)
 
 -- Step two
@@ -159,6 +155,7 @@ end)
 later(function()
   require('mini.misc').setup({ make_global = { 'put', 'put_text', 'stat_summary', 'bench_time' } })
   MiniMisc.setup_auto_root()
+  MiniMisc.setup_restore_cursor()
 end)
 
 later(function()

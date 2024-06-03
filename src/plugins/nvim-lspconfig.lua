@@ -95,3 +95,5 @@ end
 
 -- Zig (zls)
 lspconfig.zls.setup({ on_attach = on_attach_custom })
+
+lspconfig.glsl_analyzer.setup({ on_attach = on_attach_custom })
