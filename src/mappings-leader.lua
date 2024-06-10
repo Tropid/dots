@@ -93,6 +93,10 @@ nmap_leader('ol', '<Cmd>normal gxiagxina<cr>', 'Move arg right')
 nmap_leader('oH', '<Cmd>TSBufToggle highlight<cr>', 'Highlight Toggle')
 nmap_leader('os', '<Cmd>lua MiniSessions.select()<cr>', 'Highlight Toggle')
 
+-- Snippets
+vim.keymap.set("n", "<leader>se", function() require("scissors").editSnippet() end)
+vim.keymap.set({ "n", "x" }, "<leader>sa", function() require("scissors").addNewSnippet() end)
+
 local map_pick_core = function(keys, cwd, desc)
   local rhs = function()
     local sort_latest = MiniVisits.gen_sort.default({ recency_weight = 1 })

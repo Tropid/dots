@@ -158,10 +158,6 @@ later(function()
   MiniMisc.setup_restore_cursor()
 end)
 
-later(function()
-    source('snippets.lua')
-end)
-
 later(function() require('mini.sessions').setup() end)
 
 later(function() require('mini.starter').setup() end)
@@ -210,4 +206,38 @@ end)
 later(function()
   add('akinsho/toggleterm.nvim')
   require('toggleterm').setup()
+end)
+
+later(function()
+  add('folke/lazydev.nvim')
+  require('lazydev').setup()
+end)
+
+later(function()
+  add('chrisgrieser/nvim-scissors')
+  require('scissors').setup({
+      snippetDir = vim.fn.stdpath('config') .. '/snippets/',
+  })
+end)
+
+later(function()
+  add({
+      source = 'L3MON4D3/LuaSnip',
+      hooks = { post_checkout = function() vim.cmd('make install_jsregexp') end },
+  })
+  local ls = require("luasnip")
+  ls.setup()
+  require('luasnip.loaders.from_vscode').lazy_load({
+      paths = vim.fn.stdpath('config') ..'/snippets/',
+  })
+
+  vim.keymap.set({ "i" }, "<C-K>", function() ls.expand() end, { silent = true })
+  vim.keymap.set({ "i", "s" }, "<C-L>", function() ls.jump(1) end, { silent = true })
+  vim.keymap.set({ "i", "s" }, "<C-J>", function() ls.jump(-1) end, { silent = true })
+
+    vim.keymap.set({"i", "s"}, "<C-E>", function()
+        if ls.choice_active() then
+          ls.change_choice(1)
+        end
+    end, {silent = true})
 end)
