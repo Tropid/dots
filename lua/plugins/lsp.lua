@@ -11,6 +11,7 @@ return {
       require('lazydev').setup()
 
       lspconfig.lua_ls.setup({})
+      lspconfig.zls.setup({})
     end
   }
 }
