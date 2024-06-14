@@ -3,6 +3,8 @@ _G.Config.leader_group_clues = {
   { mode = 'n', keys = '<Leader>f', desc = '+Find' },
   { mode = 'n', keys = '<Leader>g', desc = '+Git' },
   { mode = 'n', keys = '<Leader>l', desc = '+LSP' },
+  { mode = 'n', keys = '<Leader>h', desc = '+Gitsigns' },
+  { mode = 'n', keys = '<Leader>s', desc = '+Snippets' },
 
   { mode = 'x', keys = '<Leader>l', desc = '+LSP' },
 }
@@ -44,3 +46,7 @@ lmap('n', 'hr', '<Cmd>Gitsigns reset_hunk<cr>', 'Reset Hunk')
 lmap('n', 'hp', '<Cmd>Gitsigns preview_hunk<cr>', 'Preview Hunk')
 lmap('n', 'hd', '<Cmd>Gitsigns diffthis<cr>', 'Diff This')
 lmap('n', 'hb', '<Cmd>lua require("gitsigns").blame_line{full=true}<cr>', 'Diff This')
+
+lmap('n', 'sa', '<Cmd>lua require("scissors").addNewSnippet()<cr>', 'New Snippet')
+lmap('x', 'sa', '<Cmd>lua require("scissors").addNewSnippet()<cr>', 'New Snippet')
+lmap('n', 'se', '<Cmd>lua require("scissors").editSnippet()<cr>', 'Edit Snippets')
