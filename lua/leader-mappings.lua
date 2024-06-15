@@ -54,3 +54,5 @@ lmap("n", "hb", '<Cmd>lua require("gitsigns").blame_line{full=true}<cr>', "Diff 
 lmap("n", "sa", '<Cmd>lua require("scissors").addNewSnippet()<cr>', "New Snippet")
 lmap("x", "sa", '<Cmd>lua require("scissors").addNewSnippet()<cr>', "New Snippet")
 lmap("n", "se", '<Cmd>lua require("scissors").editSnippet()<cr>', "Edit Snippets")
+
+lmap("n", "to", '<Cmd>1ToggleTerm size=40 direction=horizontal name=terminal1<cr>', "Terminal 1")

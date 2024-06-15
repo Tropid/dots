@@ -1,10 +1,9 @@
 vim.g.mapleader = " "
 
-vim.o.shellslash = true
-vim.o.number = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.expandtab = true
+vim.opt.shellslash = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
 
 vim.opt.number = true
 vim.opt.mouse = "a"
@@ -24,7 +23,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.inccommand = "split"
 
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
