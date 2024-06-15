@@ -19,6 +19,7 @@ lmap("n", "fc", "<Cmd>Telescope grep_string<cr>", "Find Files")
 lmap("n", "fo", "<Cmd>Telescope oldfiles<cr>", "Old Files")
 lmap("n", "fj", "<Cmd>Telescope jumplist<cr>", "Jumps")
 lmap("n", "fb", "<Cmd>Telescope buffers<cr>", "Buffers")
+lmap("n", "ft", "<Cmd>Telescope tags<cr>", "Tags")
 
 lmap("n", "ee", "<Cmd>lua MiniFiles.open()<cr>", "Config")
 lmap("n", "ec", '<Cmd>lua MiniFiles.open(vim.fn.stdpath("config"))<cr>', "Config")
