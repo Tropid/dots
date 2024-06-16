@@ -20,6 +20,8 @@ lmap("n", "fo", "<Cmd>Telescope oldfiles<cr>", "Old Files")
 lmap("n", "fj", "<Cmd>Telescope jumplist<cr>", "Jumps")
 lmap("n", "fb", "<Cmd>Telescope buffers<cr>", "Buffers")
 lmap("n", "ft", "<Cmd>Telescope tags<cr>", "Tags")
+lmap("n", "fh", "<Cmd>Telescope help_tags<cr>", "Help")
+lmap("n", "fm", "<Cmd>Telescope marks<cr>", "Marks")
 
 lmap("n", "ee", "<Cmd>lua MiniFiles.open()<cr>", "Config")
 lmap("n", "ec", '<Cmd>lua MiniFiles.open(vim.fn.stdpath("config"))<cr>', "Config")
@@ -55,4 +57,4 @@ lmap("n", "sa", '<Cmd>lua require("scissors").addNewSnippet()<cr>', "New Snippet
 lmap("x", "sa", '<Cmd>lua require("scissors").addNewSnippet()<cr>', "New Snippet")
 lmap("n", "se", '<Cmd>lua require("scissors").editSnippet()<cr>', "Edit Snippets")
 
-lmap("n", "to", '<Cmd>1ToggleTerm size=40 direction=horizontal name=terminal1<cr>', "Terminal 1")
+lmap("n", "to", "<Cmd>1ToggleTerm size=40 direction=horizontal name=terminal1<cr>", "Terminal 1")
