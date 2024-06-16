@@ -9,6 +9,7 @@ vim.opt.number = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.breakindent = true
+vim.opt.wrap = false
 vim.opt.undofile = true
 
 vim.opt.ignorecase = true
@@ -23,7 +24,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.opt.inccommand = "split"
 
-vim.opt.cursorline = false
+vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
