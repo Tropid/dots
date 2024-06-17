@@ -27,6 +27,7 @@ return {
 			require("mason").setup()
 			require("lazydev").setup()
 
+			lspconfig.clangd.setup({ handlers = handlers })
 			lspconfig.lua_ls.setup({ handlers = handlers })
 			lspconfig.pyright.setup({ handlers = handlers })
 			lspconfig.zls.setup({ handlers = handlers })
