@@ -2,8 +2,15 @@ vim.g.mapleader = " "
 
 local uname = vim.loop.os_uname()
 
-if (uname.sysname:find('Windows') and true or false) then
-  vim.opt.shellslash = true
+if uname.sysname:find("Windows") and true or false then
+	vim.opt.shellslash = true
+	vim.opt.shell = "bash"
+	vim.opt.shellcmdflag = "-c"
+	vim.opt.shellredir = ">%s 2>&1"
+	vim.opt.shellquote = ""
+	vim.opt.shellxescape = ""
+	vim.opt.shellxquote = ""
+	vim.opt.shellpipe = "2>&1| tee"
 end
 
 vim.opt.shiftwidth = 2
@@ -35,10 +42,10 @@ vim.opt.scrolloff = 10
 
 vim.opt.hlsearch = true
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
