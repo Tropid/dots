@@ -1,11 +1,17 @@
 vim.g.mapleader = " "
 
-vim.opt.shellslash = true
+local uname = vim.loop.os_uname()
+
+if (uname.sysname:find('Windows') and true or false) then
+  vim.opt.shellslash = true
+end
+
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
 
 vim.opt.number = true
+vim.opt.relativenumber = true
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.breakindent = true

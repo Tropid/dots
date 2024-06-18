@@ -5,6 +5,7 @@ _G.Config.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>l", desc = "+LSP" },
 	{ mode = "n", keys = "<Leader>h", desc = "+Gitsigns" },
 	{ mode = "n", keys = "<Leader>s", desc = "+Snippets" },
+	{ mode = "n", keys = "<Leader>o", desc = "+Overseer" },
 
 	{ mode = "x", keys = "<Leader>l", desc = "+LSP" },
 }
@@ -57,4 +58,9 @@ lmap("n", "sa", '<Cmd>lua require("scissors").addNewSnippet()<cr>', "New Snippet
 lmap("x", "sa", '<Cmd>lua require("scissors").addNewSnippet()<cr>', "New Snippet")
 lmap("n", "se", '<Cmd>lua require("scissors").editSnippet()<cr>', "Edit Snippets")
 
-lmap("n", "to", "<Cmd>1ToggleTerm size=40 direction=horizontal name=terminal1<cr>", "Terminal 1")
+lmap("n", "to", '<Cmd>1ToggleTerm size=40 direction=horizontal name=terminal1<cr>', "Terminal 1")
+
+lmap("n", "ot", '<Cmd>OverseerToggle<cr>', "Toggle UI")
+lmap("n", "ol", '<Cmd>OverseerLoadBundle<cr>', "Load")
+lmap("n", "os", '<Cmd>OverseerSaveBundle<cr>', "Load")
+lmap("n", "ob", '<Cmd>OverseerBuild<cr>', "Build")
