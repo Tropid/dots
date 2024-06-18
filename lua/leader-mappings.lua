@@ -62,5 +62,6 @@ lmap("n", "to", '<Cmd>1ToggleTerm size=40 direction=horizontal name=terminal1<cr
 
 lmap("n", "ot", '<Cmd>OverseerToggle<cr>', "Toggle UI")
 lmap("n", "ol", '<Cmd>OverseerLoadBundle<cr>', "Load")
-lmap("n", "os", '<Cmd>OverseerSaveBundle<cr>', "Load")
+lmap("n", "os", '<Cmd>OverseerSaveBundle<cr>', "Save")
 lmap("n", "ob", '<Cmd>OverseerBuild<cr>', "Build")
+lmap("n", "or", '<Cmd>OverseerRun<cr>', "Run")
