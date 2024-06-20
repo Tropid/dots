@@ -41,6 +41,7 @@ lmap("n", "lR", "<Cmd>lua vim.lsp.buf.rename()<cr>", "Rename")
 lmap("n", "lf", '<Cmd>lua require("conform").format()<cr>', "Format")
 lmap("v", "lf", '<Cmd>lua require("conform").format()<cr>', "Format Range")
 lmap("n", "lh", "<Cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", "Toggle Inlay Hints")
+vim.api.nvim_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<cr>", { desc = "Goto Definition"})
 
 lmap("n", "gg", "<Cmd>G<cr>", "Git")
 lmap("n", "gb", "<Cmd>Telescope git_branches<cr>", "Branches")

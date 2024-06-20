@@ -6,6 +6,10 @@ return {
     require('mini.files').setup()
     require('mini.operators').setup()
     require('mini.surround').setup()
+    require('mini.splitjoin').setup()
+
+    local misc = require('mini.misc')
+    misc.setup_restore_cursor()
 
     local miniclue = require('mini.clue')
     --stylua: ignore
