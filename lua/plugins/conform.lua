@@ -4,7 +4,7 @@ return {
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {
-					cpp = { "clangd" },
+					cpp = { "clang-format" },
 					json = { "jq" },
 					lua = { "stylua" },
 					python = { "black" },
