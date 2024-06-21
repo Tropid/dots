@@ -1,0 +1,1 @@
+{"std":{"body":"const std = @import(\"std\");","prefix":"std"},"imp":{"body":"const $1 = @import(\"$1.zig\");","prefix":"imp"}}

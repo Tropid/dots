@@ -31,6 +31,7 @@ return {
 			lspconfig.jsonls.setup({ handlers = handlers })
 			lspconfig.lua_ls.setup({ handlers = handlers })
 			lspconfig.pyright.setup({ handlers = handlers })
+			lspconfig.rust_analyzer.setup({ handlers = handlers })
 			lspconfig.zls.setup({ handlers = handlers })
 		end,
 	},

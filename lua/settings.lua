@@ -18,7 +18,7 @@ vim.opt.tabstop = 2
 vim.opt.expandtab = true
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.breakindent = true
