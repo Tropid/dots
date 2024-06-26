@@ -22,6 +22,7 @@ vim.opt.relativenumber = false
 vim.opt.mouse = "a"
 vim.opt.showmode = false
 vim.opt.breakindent = true
+vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.undofile = true
 
@@ -38,7 +39,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.inccommand = "split"
 
 vim.opt.cursorline = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 3
 
 vim.opt.hlsearch = true
 
