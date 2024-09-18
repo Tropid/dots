@@ -7,9 +7,9 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"hrsh7th/nvim-cmp",
 
 			"saadparwaiz1/cmp_luasnip",
+			"andersevenrud/cmp-tmux",
 		},
 		config = function()
 			local cmp = require("cmp")
@@ -36,9 +36,18 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "nvim_lsp_signature_help" },
+					{ name = "path" },
 					{ name = "luasnip" },
+					{ name = "tmux" },
 				}, {
-					{ name = "buffer" },
+					{
+						name = "buffer",
+						option = {
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end,
+						},
+					},
 				}),
 			})
 

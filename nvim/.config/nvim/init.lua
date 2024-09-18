@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local source = function(f) dofile(vim.fn.stdpath('config')..'/lua/'..f) end
 
+source('functions.lua')
 source('settings.lua')
 source('mappings.lua')
 source('leader-mappings.lua')
