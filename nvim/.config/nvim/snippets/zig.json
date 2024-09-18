@@ -1,0 +1,1 @@
+{"dbg":{"prefix":"dbg","body":"log.debug(\"  DEBUG: {$1}\", .{$2});"},"st":{"body":["pub const $1 = struct {","  $2","};"],"prefix":"st"},"std":{"prefix":"std","body":"const std = @import(\"std\");"},"imp":{"prefix":"imp","body":"const $1 = @import(\"$1.zig\");"}}
