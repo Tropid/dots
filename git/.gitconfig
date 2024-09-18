@@ -1,0 +1,59 @@
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	b = branch
+	ll = log --graph --oneline --decorate
+	lo = log --decorate --oneline
+	st = status
+	l = log
+	pr = pull --rebase
+	f = fetch
+	su = submodule
+	sdiff = !git diff && git submodule foreach 'git diff'
+	spush = push --recurse-submodules=on-demand
+	supdate = submodule update --remote --rebase
+
+[user]
+	name = Tropid
+	email = rdk.keller@gmail.com
+
+[merge]
+	tool = nvimdiff
+	conflictstyle = diff3
+
+[mergetool "nvimdiff"]
+	layout = "LOCAL,BASE,REMOTE / MERGED"
+
+[pull]
+	rebase = false
+
+[rerere]
+	enabled = true
+
+[log]
+	date = iso-local
+
+[format]
+	pretty = format:%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(26,trunc)%ad %C(auto,green)%<(12,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD%d
+
+[init]
+	defaultBranch = main
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[status]
+	submodulesummary = 1
+
+[push]
+	recurseSubmodules = check
+
+[submodule]
+	recurse = true
+
+[core]
+	editor = nvim
